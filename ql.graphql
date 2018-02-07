@@ -1,0 +1,38 @@
+{
+  query CloneBoard($copy_project: String!, $origin_repo_owner: String!, $origin_repo_name: String!) {
+    repository(owner: $origin_repo_owner, name: $origin_repo_name) {
+      projects(search: $copy_project, first: 1) {
+        edges {
+          node {
+            # ProjectName
+            name
+            # ProjectColumn
+            columns(first: 20) {
+              edges {
+                node {
+                  # ProjectCard
+                  cards(first: 20) {
+                    edges {
+                      node {
+                        note
+                        column {
+                          id
+                          name
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  },
+  variables: {
+     "copy_project": "SampleProjectBoard",
+     "origin_repo_owner": "Himenon",
+     "origin_repo_name": "GithubProjectBoardColone"
+  }
+}

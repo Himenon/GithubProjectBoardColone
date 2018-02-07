@@ -1,0 +1,9 @@
+projects:
+  clone-github-project-board:
+    schemaPath: schema.graphql
+    extensions:
+      endpoints:
+        default:
+          headers:
+            Authorization: "bearer ${env:AUTH_TOKEN_ENV}"
+          url: 'https://api.github.com/graphql'
